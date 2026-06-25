@@ -364,10 +364,15 @@
     .btn{font-size:17px;padding:16px 26px;width:100%;justify-content:center}
     .cta-row{flex-direction:column;align-items:stretch}
     .bigword{font-size:21vw}
-    /* 벤토 → 모바일 1단 */
+    /* 벤토 → 모바일도 예쁜 배치 유지 (플랑크톤·섹백클 나란히) */
     .bento{
-      grid-template-columns:1fr;
-      grid-template-areas:"four" "five" "two" "one" "three";
+      grid-template-columns:repeat(2,1fr);
+      grid-auto-rows:auto;
+      grid-template-areas:
+        "five  five"
+        "four  four"
+        "two   two"
+        "one   three";
     }
     .pcard{min-height:auto}
     .pc-five{min-height:auto}
@@ -437,7 +442,7 @@
 <section class="hero" id="home">
   <div class="wrap">
     <div class="badges reveal">
-      <span class="badge"><span class="tq"></span>3년간 <b>66명</b> 작가 탄생</span>
+      <span class="badge"><span class="tq"></span>최근 3년간 <b>66명</b> 작가 탄생</span>
       <span class="badge"><span class="tq"></span><b>26권</b> 출간</span>
       <span class="badge"><span class="tq"></span>새벽 2시 <b>6년</b>째</span>
     </div>
@@ -451,7 +456,7 @@
       <a href="#program" class="btn btn-secondary">백세작가 상담</a>
     </div>
 
-    <p class="trustline reveal">28~30년 출판 경력 · <b>1,000권 제작</b> · 톱클래스 칼럼니스트 · 위너 커뮤니티 <b>3,000명</b></p>
+    <p class="trustline reveal" style="letter-spacing:-.02em">1999년 출판 입문 · 28년차 · <b>1,000여 권 출간</b> · 톱클래스 칼럼니스트 · 6년간 <b>3,000명</b>과 새벽 공부</p>
 
     <div class="bigword reveal">책쓰기브랜딩<span class="reg">®</span>
       <span class="ko-small">백세라이프디자이너 · 최원교</span>
@@ -465,23 +470,26 @@
     <div class="eyebrow reveal"><span class="num">01</span><span class="bar"></span>최원교 이야기</div>
     <div class="story">
       <div class="story-photo reveal">
-        <img src="choi-wongyo.jpg" alt="최원교 작가 — 책 《슈퍼 어게인 : 꿈을 이루게 하는 삶의 공식》 저자" loading="lazy">
+        <a href="https://blog.naver.com/cmass77/223571168900" target="_blank" rel="noopener" title="최원교는 누구인가? — 블로그에서 보기" style="display:block">
+          <img src="choi-wongyo.jpg" alt="최원교 작가 — 《삶의 공식》 저자 · 백세라이프디자이너" loading="lazy">
+        </a>
         <div class="cap">
           <span class="tqbar"></span>
-          <div><b>최원교</b><span>《슈퍼 어게인》 저자 · 백세라이프디자이너</span></div>
+          <div><b>최원교</b><span style="letter-spacing:-.03em">나는 100세까지 섹시하게 살기로 했다 · 딱따라 책쓰기 비법</span></div>
         </div>
       </div>
       <div class="story-quotes reveal">
-        <h2 class="title">왜 새벽 2시에<br>일어났을까요?</h2>
-        <p class="story-intro">스무 해 넘게 남의 책을 만들었어요. 그러다 알았죠 — 이제는 내 이야기를 쓸 차례라는 걸. 그래서 새벽 2시에 일어나기 시작했습니다.</p>
+        <h2 class="title">왜 <span style="color:var(--orange)">새벽 2시</span>에<br>일어났을까요?</h2>
+        <p class="story-intro">스무 해 넘게 남의 책을 만들었어요. 그러다 알았죠 — 이제는 내 이야기를 쓸 차례라는 걸. 그래서 새벽 2시에 일어나기 시작했습니다. 왜 하필 <span style="color:var(--orange);font-weight:700">새벽 2시</span>냐고요? 500여 권을 읽고(인풋), 내 이야기를 쓰는(아웃풋) 가장 맑고 고요한 시간이거든요.</p>
         <div class="qline">“<span>경험한 것만</span> 말합니다.”</div>
-        <div class="qline">과장도, 날조도 없어요.<br>실제 숫자와 실제 사례만 보여드려요.</div>
+        <p style="margin:16px 0 4px;line-height:1.85;color:#3a3a3a;font-size:1rem">6년간 무료 강의부터 원교클라스, 부글새벽 유료 강의까지 — 약 <b>3,000명</b>과 새벽을 함께 공부했어요. 솔직히 말할게요. 거의 다 중간에 멈췄습니다. 끝까지 남아 지금도 성장 중인 분은 <b>단 한 분</b>이에요. 그분이 특별해서가 아니라, 끝까지 ‘딱 따라’ 왔을 뿐이죠. <b style="color:var(--orange)">다음 한 분은, 친구님이면 좋겠어요.</b></p>
+        <div class="qline">과장도 허구도 없어요.<br>실제 숫자와 실제 사례만 보여드려요.</div>
         <div class="qline">“일단 시작하고,<br><span>나중에</span> 완벽해지세요.”</div>
       </div>
     </div>
     <div class="story-num reveal">
       <div class="nstat"><div class="big">28<em>년</em></div><div class="lbl">출판 경력</div></div>
-      <div class="nstat tq"><div class="big">1,000<em>권</em></div><div class="lbl">직접 제작</div></div>
+      <div class="nstat tq"><div class="big">1,000<em>권</em></div><div class="lbl">출간</div></div>
       <div class="nstat tq"><div class="big">500<em>권</em></div><div class="lbl">읽고 정리</div></div>
       <div class="nstat"><div class="big">6<em>년</em></div><div class="lbl">새벽 2시 기상</div></div>
     </div>
@@ -497,7 +505,7 @@
 
     <div class="bento">
       <!-- 4. 백세작가 (대표·터콰이즈) -->
-      <a href="#gift" class="pcard pc-four reveal">
+      <a href="#" class="pcard pc-four reveal" data-open="bsjModal">
         <div>
           <span class="pc-tag"><span class="dot"></span>대표 프로그램 · 3개월</span>
           <h3>백세작가</h3>
@@ -521,7 +529,7 @@
       </a>
 
       <!-- 2. 대가창 (큰 블록·오렌지) -->
-      <a href="#" class="pcard pc-two reveal">
+      <a href="#" class="pcard pc-two reveal" data-open="dgcModal">
         <div>
           <span class="pc-tag"><span class="dot"></span>창립자 클럽</span>
           <h3>대가창</h3>
@@ -531,7 +539,7 @@
       </a>
 
       <!-- 1. 플랑크톤 글책 크루 (작은 블록) -->
-      <a href="#" class="pcard pc-one reveal">
+      <a href="#" class="pcard pc-one reveal" data-open="planktonModal">
         <div>
           <span class="pc-tag"><span class="dot"></span>입문 크루</span>
           <h3>플랑크톤 글책 크루</h3>
@@ -541,7 +549,7 @@
       </a>
 
       <!-- 3. 섹시백세실행클럽 (작은 블록) -->
-      <a href="#" class="pcard pc-three reveal">
+      <a href="#" class="pcard pc-three reveal" data-open="sbcModal">
         <div>
           <span class="pc-tag"><span class="dot"></span>실행 클럽</span>
           <h3>섹시백세실행클럽</h3>
@@ -560,13 +568,14 @@
     <div class="bugle reveal">
       <div>
         <h3>부글부글 끓는 <span class="em">새벽</span>,<br>혼자가 아니에요.</h3>
-        <p>새벽에 모여 함께 읽고 씁니다. 1,000회를 넘긴 부글새벽, 그리고 3,000명의 위너 커뮤니티가 백친님을 기다려요.</p>
-        <a href="#" class="btn btn-secondary" style="margin-top:24px">부글새벽 참여하기</a>
+        <p>새벽에 모여 함께 읽고 씁니다. 1,200회를 넘긴 부글새벽, 그리고 6년간 3,000명과 함께한 <b>백세라이프 위너</b>가 백친님을 기다려요.</p>
+        <a href="https://www.youtube.com/@100selife_designer/live" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top:24px" data-yt-live>부글새벽 참여하기</a>
+        <p style="margin-top:14px;font-size:.92rem;line-height:1.65;opacity:.72">유튜브 라이브 페이지로 연결돼요 — 새벽 5시에 방송이 켜집니다. 먼저 무료로 만나고, 더 가고 싶어지면 그때 원하는 클라스를 고르면 돼요.</p>
       </div>
       <div class="clock">
         <div class="t">02:00</div>
         <div class="d">매일 새벽, 함께 시작</div>
-        <div class="meta">부글새벽 1,000회+</div>
+        <div class="meta">부글새벽 1,200회+</div>
       </div>
     </div>
   </div>
@@ -578,10 +587,15 @@
     <div class="eyebrow reveal"><span class="num">04</span><span class="bar"></span>콘텐츠 허브</div>
     <h2 class="title reveal">흩어진 채널,<br>여기 다 모였어요.</h2>
     <div class="hub-grid">
-      <a href="#" class="hub reveal"><div><div class="ic">📖</div><h4>《셀프탄생》</h4><p>최원교의 책</p></div><div class="go">읽어보기 →</div></a>
-      <a href="#" class="hub reveal"><div><div class="ic">▶</div><h4>유튜브</h4><p>영상으로 배우기</p></div><div class="go">보러가기 →</div></a>
-      <a href="#" class="hub reveal"><div><div class="ic">✎</div><h4>블로그</h4><p>매일의 기록</p></div><div class="go">구경하기 →</div></a>
-      <a href="#" class="hub reveal"><div><div class="ic">★</div><h4>톱클래스 칼럼</h4><p>전문 칼럼니스트</p></div><div class="go">칼럼 보기 →</div></a>
+      <a href="https://www.youtube.com/@100selife_designer" target="_blank" rel="noopener" class="hub reveal"><div><div class="ic">▶</div><h4>유튜브</h4><p>영상으로 배우기</p></div><div class="go">보러가기 →</div></a>
+      <a href="https://blog.naver.com/cmass77" target="_blank" rel="noopener" class="hub reveal"><div><div class="ic">✎</div><h4>블로그</h4><p>매일의 기록</p></div><div class="go">구경하기 →</div></a>
+      <a href="https://www.instagram.com/100selife_designer/" target="_blank" rel="noopener" class="hub reveal"><div><div class="ic">◎</div><h4>인스타그램</h4><p>릴스로 만나기</p></div><div class="go">보러가기 →</div></a>
+      <a href="https://topclass.chosun.com/news/articleList.html?sub_section_code=S2N25&sc_serial_code=SRN117&view_type=sm" target="_blank" rel="noopener" class="hub reveal"><div><div class="ic">★</div><h4>톱클래스 칼럼</h4><p>최원교의 마음세우기</p></div><div class="go">칼럼 보기 →</div></a>
+
+      <a href="https://topclass.chosun.com/news/articleList.html?sub_section_code=S2N25&sc_serial_code=SRN117&view_type=sm" target="_blank" rel="noopener" class="hub reveal"><div><div class="ic">📘</div><h4>삶의 공식</h4><p>톱클래스 연재</p></div><div class="go">읽어보기 →</div></a>
+      <a href="https://www.youtube.com/playlist?list=PLJYgGkK54X6twLMTNQgZ3mOk4Xhs4qeX3" target="_blank" rel="noopener" class="hub reveal"><div><div class="ic">📗</div><h4>셀프탄생</h4><p>유튜브 연재 중</p></div><div class="go">보러가기 →</div></a>
+      <a href="#" class="hub reveal" data-open="bsjModal"><div><div class="ic">📙</div><h4>딱따라 책쓰기</h4><p>거꾸로 출판 비법</p></div><div class="go">보기 →</div></a>
+      <a href="https://www.instagram.com/100selife_designer/" target="_blank" rel="noopener" class="hub reveal"><div><div class="ic">📕</div><h4>나는 100세까지 섹시하게 살기로 했다</h4><p>릴스로 미리보기</p></div><div class="go">보러가기 →</div></a>
     </div>
   </div>
 </section>
@@ -603,19 +617,19 @@
       </div>
       <div class="foot-col">
         <h5>프로그램</h5>
-        <a href="#program">백세작가</a>
-        <a href="#">셀프탄생</a>
-        <a href="#">대가창</a>
-        <a href="#">플랑크톤 글책 크루</a>
-        <a href="#">섹시백세실행클럽</a>
+        <a href="#" data-open="bsjModal">백세작가</a>
+        <a href="#" data-open="selfbirthModal">셀프탄생</a>
+        <a href="#" data-open="dgcModal">대가창</a>
+        <a href="#" data-open="planktonModal">플랑크톤 글책 크루</a>
+        <a href="#" data-open="sbcModal">섹시백세실행클럽</a>
       </div>
       <div class="foot-col">
         <h5>연결하기</h5>
         <div class="foot-contact">
-          <a class="row" href="#">카카오톡 오픈채팅 <span class="arr">→</span></a>
-          <a class="row" href="#">인스타그램 <span class="arr">→</span></a>
-          <a class="row" href="#">유튜브 <span class="arr">→</span></a>
-          <a class="row" href="#">litt.ly 링크 허브 <span class="arr">→</span></a>
+          <a class="row" href="https://www.youtube.com/@100selife_designer" target="_blank" rel="noopener">유튜브 <span class="arr">→</span></a>
+          <a class="row" href="https://open.kakao.com/o/gHF0MEuc" target="_blank" rel="noopener">카카오톡 오픈채팅 <span style="font-size:.82em;opacity:.6">(입장 시 비번 필요)</span> <span class="arr">→</span></a>
+          <a class="row" href="https://www.instagram.com/100selife_designer/" target="_blank" rel="noopener">인스타그램 <span class="arr">→</span></a>
+          <a class="row" href="https://litt.ly/wonkyobook" target="_blank" rel="noopener">litt.ly · 전체 링크 모음 <span class="arr">→</span></a>
         </div>
       </div>
     </div>
@@ -639,6 +653,70 @@
       <p>책 《셀프탄생》에서 출발해, 매주 인스타그램·유튜브·블로그로 이어지는 콘텐츠로 함께 걸어요. 그 길의 첫 도구가 <b>'나만의 100개 질문지 — 인생 셀프탄생 스테이지'</b>입니다.</p>
       <p class="sig">경험한 것만 말합니다.</p>
       <a href="#gift" class="modal-cta" data-close>먼저 선물부터 받아보기 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- 백세작가(거꾸로 출판) 모달 -->
+<div class="modal-overlay" id="bsjModal" role="dialog" aria-modal="true" aria-labelledby="bsjTitle">
+  <div class="modal-panel">
+    <button class="modal-close" type="button" data-close aria-label="닫기">&times;</button>
+    <span class="modal-eyebrow">대표 프로그램 · 3개월</span>
+    <h3 class="modal-title" id="bsjTitle">백세작가<span class="dot">.</span></h3>
+    <div class="modal-body">
+      <p><b>책을 다 쓴 뒤에 출판사를 찾는다고요? 저는 거꾸로 합니다.</b></p>
+      <p>출판 계약을 먼저 하고, 그때부터 함께 써요. 마감이 생기니 미룰 수가 없고, 제가 딱 옆에서 잡아드리니 저절로 따라 써집니다. 그래서 이름이 ‘딱따라’예요.</p>
+      <p>30년 출판 외길이 만든 ‘거꾸로 출판’. 최근 3년간 66명이 작가가 됐고, 26권이 세상에 나왔어요. 재능이 아니라, 출판계약과 동시에 시작하는 그 한 걸음에서요.</p>
+      <p class="sig">경험한 것만 말합니다.</p>
+      <a href="#gift" class="modal-cta" data-close>1:1 상담 신청하기 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- 대가창 모달 -->
+<div class="modal-overlay" id="dgcModal" role="dialog" aria-modal="true" aria-labelledby="dgcTitle">
+  <div class="modal-panel">
+    <button class="modal-close" type="button" data-close aria-label="닫기">&times;</button>
+    <span class="modal-eyebrow">창립자 클럽</span>
+    <h3 class="modal-title" id="dgcTitle">대가창<span class="dot">.</span></h3>
+    <div class="modal-body">
+      <p>부동산도 주식도 잃을 수 있어요. 하지만 내가 줄 긋고, 접고, 내 생각을 써넣은 책 한 권 — 그 시간과 철학은 영원히 가문을 지킵니다.</p>
+      <p>12주 동안 12권을 읽고, 12번의 피드백으로 내가 먼저 성장해요. 그 책들이 그대로 ‘가문도서관’의 추천 인생책이 되죠.</p>
+      <p>매주 수요일 새벽 5시, 단독방에서 톡톡 나누는 응집력 — 창립자분들 <b>100% 대만족</b>이에요. 목표는 하나, 내가 없는 세상에서 시작될 후손들과의 대화.</p>
+      <p class="sig">경험한 것만 말합니다.</p>
+      <a href="#gift" class="modal-cta" data-close>창립자로 합류하기 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- 플랑크톤 글책 크루 모달 -->
+<div class="modal-overlay" id="planktonModal" role="dialog" aria-modal="true" aria-labelledby="pkTitle">
+  <div class="modal-panel">
+    <button class="modal-close" type="button" data-close aria-label="닫기">&times;</button>
+    <span class="modal-eyebrow">입문 크루</span>
+    <h3 class="modal-title" id="pkTitle">플랑크톤 글책 크루<span class="dot">.</span></h3>
+    <div class="modal-body">
+      <p><b>바다의 시작은 가장 작은 플랑크톤. 글도 똑같아요.</b></p>
+      <p>‘잘 쓰는’ 모임이 아니라 ‘매일 쓰는’ 모임이에요. 4주 동안 주말도 없이 매일 단톡방에 한 줄을 인증하고, 매주 화요일 새벽 5시엔 함께 피드백해요.</p>
+      <p>혼자면 사흘, 함께면 4주가 끝까지 가요. 1기 7명이 그렇게 매일을 채웠어요. 완벽한 문장 말고, 오늘의 한 줄부터.</p>
+      <p class="sig">경험한 것만 말합니다.</p>
+      <a href="#gift" class="modal-cta" data-close>오늘 한 줄부터 시작하기 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- 섹시백세실행클럽 모달 -->
+<div class="modal-overlay" id="sbcModal" role="dialog" aria-modal="true" aria-labelledby="sbcTitle">
+  <div class="modal-panel">
+    <button class="modal-close" type="button" data-close aria-label="닫기">&times;</button>
+    <span class="modal-eyebrow">실행 클럽</span>
+    <h3 class="modal-title" id="sbcTitle">섹시백세실행클럽<span class="dot">.</span></h3>
+    <div class="modal-body">
+      <p><b>백 살까지 사는 건 누구나 해요. 백 살까지 ‘섹시하게’ 사는 건 다르죠.</b></p>
+      <p>섹백클은 한 달 동안 단톡방에서 매일 건강을 인증하는 실행 클럽이에요. 음양탕 한 잔, 매일 체중 체크, 하루 9999보 — 작은 실천을 매일 함께 쌓아요.</p>
+      <p>의지는 약해도 약속은 셉니다. 혼자 다짐하지 말고, 같이 실행해요.</p>
+      <p class="sig">경험한 것만 말합니다.</p>
+      <a href="#gift" class="modal-cta" data-close>함께 실행하기 →</a>
     </div>
   </div>
 </div>
@@ -667,19 +745,28 @@
     });
   })();
 
-  // 셀프탄생 모달 열고 닫기
+  // 프로그램 설명 모달 (셀프탄생·백세작가·대가창·플랑크톤·섹백클 공통)
   (function(){
-    var overlay = document.getElementById('selfbirthModal');
-    if(!overlay) return;
-    function open(){ overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function close(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
-    document.querySelectorAll('[data-open="selfbirthModal"]').forEach(function(el){
-      el.addEventListener('click', function(e){ e.preventDefault(); open(); });
+    function closeAll(){
+      document.querySelectorAll('.modal-overlay.open').forEach(function(o){ o.classList.remove('open'); });
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-open]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        var target = document.getElementById(el.getAttribute('data-open'));
+        if(!target) return;
+        closeAll();
+        target.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
     });
-    overlay.addEventListener('click', function(e){
-      if(e.target === overlay || (e.target.closest && e.target.closest('[data-close]'))) close();
+    document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+      overlay.addEventListener('click', function(e){
+        if(e.target === overlay || (e.target.closest && e.target.closest('[data-close]'))) closeAll();
+      });
     });
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAll(); });
   })();
 </script>
 </body>
