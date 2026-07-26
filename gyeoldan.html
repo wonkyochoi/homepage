@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>「결단」 실행할 수밖에 없는 질문 8개 · 최원교</title>
+<meta name="description" content="롭 무어 『결단』을 읽고 오늘 답하는 실행질문 8개. 백세라이프디자이너 최원교.">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#0a0a0a;
+    --mute:#6b6b6b;
+    --line:#e8e8e8;
+    --mark:#08E8DE;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Malgun Gothic','Noto Sans KR',sans-serif;
+    line-height:1.75;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;
+  }
+  .num{font-family:'Times New Roman',Georgia,serif;font-weight:400;font-variant-numeric:lining-nums}
+
+  /* 상단 진행 바 */
+  .bar{
+    position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  }
+  .bar-in{max-width:680px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:14px}
+  .bar-t{font-size:13px;color:var(--mute);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pips{display:flex;gap:6px;flex:none}
+  .pip{width:22px;height:6px;background:var(--line);transition:background .35s}
+  .pip.on{background:var(--mark)}
+
+  .wrap{max-width:680px;margin:0 auto;padding:0 24px 100px}
+
+  header{padding:64px 0 0}
+  .qrwrap{
+    display:flex;align-items:center;gap:26px;margin:34px 0 0;padding:24px;
+    border:1px solid var(--line);flex-wrap:wrap;
+  }
+  .qrbox{flex:none;display:block;line-height:0}
+  .qrbox img{width:134px;height:134px;display:block}
+  .qrside{flex:1;min-width:200px}
+  .qr-cap{font-size:13.5px;color:var(--mute);line-height:1.6;margin:0 0 14px}
+  .qr-cap b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+  .qr-tip{font-size:12.5px;color:var(--mute);margin:12px 0 0}
+  .qrside .cta{margin:0}
+  .eyebrow{font-size:12px;letter-spacing:.2em;color:var(--mute);margin:0 0 22px}
+  h1{font-size:clamp(28px,7vw,40px);line-height:1.3;font-weight:800;margin:0;letter-spacing:-.035em}
+  .book{margin:20px 0 0;font-size:14px;color:var(--mute)}
+
+  .instr{
+    margin:44px 0 0;padding:22px 24px;border:1px solid var(--ink);
+    font-size:16px;font-weight:700;line-height:1.65;
+  }
+  .instr .hl{
+    background:linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 92%, transparent 92%);
+    padding:0 2px;
+  }
+  .instr small{display:block;margin-top:10px;font-size:13px;font-weight:400;color:var(--mute)}
+
+  /* 질문 */
+  .q{padding:44px 0;border-bottom:1px solid var(--line);position:relative}
+  .q-head{display:flex;gap:18px;align-items:baseline}
+  .q-num{
+    font-size:34px;line-height:1;color:#c9c9c9;flex:none;width:44px;
+  }
+  .q.star .q-num{color:var(--ink);position:relative}
+  .q.star .q-num::after{
+    content:'';position:absolute;left:-4px;right:10px;bottom:2px;height:9px;
+    background:var(--mark);z-index:-1;transform:skewX(-12deg);
+  }
+  .q-num{position:relative;z-index:1}
+  .q-text{font-size:19px;font-weight:700;line-height:1.6;margin:0;flex:1;word-break:keep-all}
+  .q-sub{margin:12px 0 0 62px;font-size:14.5px;color:var(--mute);line-height:1.7;word-break:keep-all}
+  .today{
+    display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.05em;
+    vertical-align:middle;background:var(--ink);color:#fff;padding:3px 8px;
+  }
+
+  .quote{margin:22px 0 0 62px;padding:20px 0 20px 24px;border-left:4px solid var(--mark)}
+  .quote p{margin:0;font-size:22px;font-weight:800;line-height:1.45;letter-spacing:-.03em}
+  .quote cite{display:block;margin-top:12px;font-size:13px;font-style:normal;color:var(--mute)}
+  .ans{margin:20px 0 0 62px}
+  textarea,input[type=text],input[type=time]{
+    width:100%;border:0;border-bottom:1.5px solid var(--line);background:transparent;
+    font-family:inherit;font-size:17px;line-height:1.9;color:var(--ink);
+    padding:8px 2px;resize:none;overflow:hidden;
+  }
+  textarea::placeholder,input::placeholder{color:#c4c4c4}
+  textarea:focus,input:focus{outline:none;border-bottom-color:var(--mark);border-bottom-width:2px}
+  input[type=time]{width:auto;min-width:150px;font-size:19px;font-weight:700}
+
+  .yn{display:flex;gap:10px;margin-top:6px}
+  .yn button{
+    font-family:inherit;font-size:15px;font-weight:700;padding:11px 30px;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;color:var(--mute);transition:.15s;
+  }
+  .yn button:hover{border-color:var(--ink);color:var(--ink)}
+  .yn button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* 마무리 */
+  .done{
+    margin:40px 0 0;padding:20px 24px;background:var(--mark);color:var(--ink);
+    font-size:16px;font-weight:800;text-align:center;
+    opacity:0;transform:translateY(6px);transition:.5s;pointer-events:none;
+  }
+  .done.on{opacity:1;transform:none}
+
+  .close{margin:56px 0 0;padding-top:40px;border-top:2px solid var(--ink)}
+  .close p{font-size:17px;line-height:1.8;margin:0 0 6px;word-break:keep-all}
+  .close .quiet{color:var(--mute);font-size:15px}
+  .close .hook{font-size:clamp(21px,5.2vw,26px);font-weight:800;line-height:1.5;margin:0 0 14px;letter-spacing:-.025em}
+  .close .hook .hl{background:linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 94%, transparent 94%);padding:0 2px}
+  .hook-sub{font-size:18px;line-height:1.8;color:var(--ink);font-weight:700;margin:0}
+  .bookline{margin:36px 0 0;font-size:17px;line-height:1.8}
+  .cta{
+    display:inline-block;margin:24px 0 0;padding:16px 32px;background:var(--ink);color:#fff;
+    text-decoration:none;font-size:16px;font-weight:700;
+  }
+  .cta:hover{background:var(--mark);color:var(--ink)}
+  .tail{margin:36px 0 0;font-size:13.5px;color:var(--mute);line-height:1.8;word-break:keep-all}
+  .tail strong{color:var(--ink)}
+
+  .tools{display:flex;gap:10px;flex-wrap:wrap;margin:48px 0 0}
+  .tools button{
+    font-family:inherit;font-size:14px;font-weight:700;padding:14px 24px;cursor:pointer;
+    border:1.5px solid var(--ink);background:#fff;color:var(--ink);transition:.15s;
+  }
+  .tools button:hover{background:var(--ink);color:#fff}
+  .note{margin:16px 0 0;font-size:13px;color:var(--mute);line-height:1.7}
+
+  .sig{margin:60px 0 0;font-size:13px;color:var(--mute);text-align:center;line-height:1.9}
+
+  @media (max-width:560px){
+    .q-head{flex-direction:column;gap:8px}
+    .q-num{font-size:26px;width:auto}
+    .q-sub,.ans,.quote{margin-left:0}
+    .quote p{font-size:19px}
+    header{padding-top:44px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  @media print{
+    .bar,.tools,.note,.done,.cta{display:none!important}
+    body{font-size:12pt}
+    .wrap{max-width:none;padding:0}
+    header{padding-top:0}
+    h1{font-size:22pt}
+    .q{padding:16pt 0;break-inside:avoid}
+    .q-text{font-size:12.5pt}
+    .quote{break-inside:avoid;padding:10pt 0 10pt 12pt}
+    .quote p{font-size:14pt}
+    .quote cite{font-size:8.5pt}
+    textarea,input{border-bottom:1px solid #999;font-size:11.5pt}
+    .close .hook{font-size:14pt}
+    .instr{border-width:1.5pt}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="bar-t">오늘 답할 것 <strong id="cnt">0</strong> / 3</span>
+    <span class="pips"><i class="pip" id="p1"></i><i class="pip" id="p6"></i><i class="pip" id="p7"></i></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">대가창 2기 · 1주차</p>
+  <h1>「결단」<br>실행할 수밖에 없는<br>질문 8개</h1>
+  <p class="book">롭 무어 『결단』 · 백세라이프디자이너 최원교</p>
+</header>
+
+<div class="qrwrap">
+  <a class="qrbox" href="https://topclass.chosun.com/news/articleView.html?idxno=32582" target="_blank" rel="noopener">
+    <img alt="조선일보 톱클래스 「결단」 칼럼 QR" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4AQAAAADnBNLHAAACCUlEQVR4nO2a4YojMQyDpeXe/5W/+2E7ky1sW1iu9hwJLS2NoCPhRLYTo7fG13uwgzu4g/sg7o8kx1ckYyQLC5ltZjqPTv2EJDnkM0bGoWXNjOfRqp8c0ScjlAKGeE51p/Po1e9hZARq8+bpPEboh0x8KAT8d//7v+BCvww0C2MRi5ltZjyPVv0q0iLkMJeRdD/fdJy3Pc7pGOkb+/Y3nkdr/pdxR8lmKgql479v4CD3PEmSZUvlJSf/ezZMxh9euXI4MJufzOfRvv+FWbByv6jhVCt4Oo9unGVH2FkyAoNX+dH+fFNx0S+IbS7Ltq2hcM1O59HcP4idDrxbsHzlMdN59OJMtg3iRyzsmDj5y2tcBBvOPAYv+833TXh04dJvI4Gpj3Dkislb8GjAeeUolfmtZiD5Ouv3BQ4k9mp377xkMXIHHl04S1iGkAzZ1mr/xc934NGGW81mMl9BjlSQTKLvwaMBl/lfqkQ1TtfZUfnKdB6t+kXFFgdIDjUjoz790zdxZP0bVYfJhZu1SP/zjcV96z9z6bVaWJz699nY7x/kgg3dVvl26t+XOCCcI7xDKyxZPYRb8GjA7fcPHs4xs4Vw/PfZeLh/UAFoVAeYls/+9+P4fv/AuEwkq5LsBI7n0atf7XZ1+aBM5EoAp/No1W+dWyrDLp2YUnE+jwn53yf/9+AO7uB+j/sLiE74ceO+C5MAAAAASUVORK5CYII=">
+  </a>
+  <div class="qrside">
+    <p class="qr-cap"><b>최원교의 마음세우기</b>조선일보 톱클래스 · 「결단」</p>
+    <a class="cta" href="https://topclass.chosun.com/news/articleView.html?idxno=32582" target="_blank" rel="noopener">칼럼 바로 읽기</a>
+    <p class="qr-tip">휴대폰으로 QR을 찍으셔도 열립니다.</p>
+  </div>
+</div>
+
+<div class="instr">
+  오늘은 <span class="hl">★ 세 개만</span> 답하세요. 나머지 다섯은 일주일 안에.
+  <small>여덟 개를 다 채우는 것이 목적이 아닙니다. 오늘 몸이 움직이는 것이 목적입니다.</small>
+</div>
+
+<section class="q star" data-k="1">
+  <div class="q-head">
+    <div class="q-num num">1</div>
+    <p class="q-text">지금 미루고 있는 결정 하나를 적으세요. 딱 하나만.<span class="today">오늘</span></p>
+  </div>
+  <div class="ans"><textarea rows="1" placeholder="여기에 씁니다"></textarea></div>
+</section>
+
+<section class="q" data-k="2">
+  <div class="q-head">
+    <div class="q-num num">2</div>
+    <p class="q-text">그 결정을 미룬 지 며칠 됐습니까?</p>
+  </div>
+  <p class="q-sub">날짜로 적으세요. "한참 됐다"는 답이 아닙니다.</p>
+  <div class="ans"><textarea rows="1" placeholder="여기에 씁니다"></textarea></div>
+</section>
+
+<section class="q" data-k="3">
+  <div class="q-head">
+    <div class="q-num num">3</div>
+    <p class="q-text">미루는 동안 좋아진 것 하나, 나빠진 것 하나를 적으세요.</p>
+  </div>
+  <div class="ans"><textarea rows="2" placeholder="좋아진 것 / 나빠진 것"></textarea></div>
+</section>
+
+<section class="q" data-k="4">
+  <div class="q-head">
+    <div class="q-num num">4</div>
+    <p class="q-text">못 내리는 진짜 이유는 무엇입니까?</p>
+  </div>
+  <p class="q-sub">"정보가 부족해서"라고 쓰셨다면, 얼마나 더 있어야 충분한지 숫자로 적어보세요. 적어보면 압니다. 그 숫자는 없습니다.</p>
+  <div class="ans"><textarea rows="2" placeholder="여기에 씁니다"></textarea></div>
+</section>
+
+<section class="q" data-k="5">
+  <div class="q-head">
+    <div class="q-num num">5</div>
+    <p class="q-text">최악의 경우 무슨 일이 생깁니까? 그 최악을 견딜 수 있습니까?</p>
+  </div>
+  <div class="ans">
+    <textarea rows="2" placeholder="최악은 이것입니다"></textarea>
+    <div class="yn">
+      <button type="button" data-yn aria-pressed="false">예</button>
+      <button type="button" data-yn aria-pressed="false">아니오</button>
+    </div>
+  </div>
+</section>
+
+<section class="q star" data-k="6">
+  <div class="q-head">
+    <div class="q-num num">6</div>
+    <p class="q-text">그 결정을 80%만 실행한다면, 무엇부터 하시겠습니까?<span class="today">오늘</span></p>
+  </div>
+  <blockquote class="quote">
+    <p>먼저 시작하고<br>나중에 완벽해져라.</p>
+    <cite>롭 무어 — 『결단』의 원제이자, 이 책 전부입니다</cite>
+  </blockquote>
+  <p class="q-sub">딱 한 줄.</p>
+  <div class="ans"><textarea rows="1" placeholder="한 줄로"></textarea></div>
+</section>
+
+<section class="q star" data-k="7">
+  <div class="q-head">
+    <div class="q-num num">7</div>
+    <p class="q-text">그 한 줄을 몇 시에 하시겠습니까?<span class="today">오늘</span></p>
+  </div>
+  <p class="q-sub">시각을 적으세요. 내일 이후는 안 됩니다.</p>
+  <div class="ans"><input type="time" id="t7" aria-label="실행할 시각"></div>
+</section>
+
+<section class="q" data-k="8">
+  <div class="q-head">
+    <div class="q-num num">8</div>
+    <p class="q-text">결정을 내렸다고 누구에게 말하겠습니까?</p>
+  </div>
+  <p class="q-sub">이름 하나.</p>
+  <div class="ans"><input type="text" placeholder="이름"></div>
+</section>
+
+<div class="done" id="done">오늘 몫은 끝났습니다. 이제 7번에 적은 시각을 지키기만 하면 됩니다.</div>
+
+<div class="close">
+  <p class="hook">백친님,<br>여기까지 오셨으면 <span class="hl">절반은 하신 겁니다.</span></p>
+  <p class="hook-sub">저는 이렇게 읽고 실행했어요.</p>
+
+  <a class="cta" href="https://topclass.chosun.com/news/articleView.html?idxno=32582" target="_blank" rel="noopener">최원교의 마음세우기 칼럼 읽기</a>
+  <p class="bookline">이 질문들은 책 없이도 답할 수 있습니다.<br><span class="quiet">다만 책이 있으면 답이 달라집니다.</span></p>
+  <!-- 공개용 백세문고 페이지가 생기면 아래 주석을 풀고 주소만 넣으세요
+  <a class="cta" href="여기에주소">백세문고에서 『결단』 보기</a>
+  -->
+  <p class="tail">이 질문을 <strong>열두 권으로 12주 동안 이어서 하는 곳</strong>이 대가창입니다.<br>「대운 만드는 가문 도서관 창립자 클럽」 · 정원 10명.</p>
+</div>
+
+<div class="tools">
+  <button type="button" id="print">PDF로 저장 · 인쇄</button>
+  <button type="button" id="copy">내 답 전체 복사</button>
+</div>
+<p class="note">답은 이 화면에만 남습니다. 창을 닫으면 사라지니, 다 쓰신 뒤 <strong>PDF로 저장</strong>하거나 <strong>복사</strong>해 두세요.</p>
+
+<p class="sig">경험한 것만 말합니다.<br>백세라이프디자이너 최원교</p>
+
+</div>
+
+<script>
+(function(){
+  var qs=function(s,r){return (r||document).querySelector(s)};
+  var qsa=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  // 칸 높이 자동 확장 (인쇄할 때 글이 잘리지 않게)
+  function grow(el){ el.style.height='auto'; el.style.height=(el.scrollHeight)+'px'; }
+  qsa('textarea').forEach(function(t){
+    grow(t);
+    t.addEventListener('input',function(){ grow(t); tick(); });
+  });
+  qsa('input').forEach(function(i){ i.addEventListener('input',tick); });
+
+  // 예 / 아니오
+  qsa('[data-yn]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')==='true';
+      qsa('[data-yn]').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed', on?'false':'true');
+    });
+  });
+
+  // ★ 세 개 진행 표시
+  function val(k){
+    var sec=qs('.q[data-k="'+k+'"]');
+    var f=qs('textarea,input',sec);
+    return f? f.value.trim() : '';
+  }
+  function tick(){
+    var keys=['1','6','7'], n=0;
+    keys.forEach(function(k){
+      var filled=val(k).length>0;
+      if(filled) n++;
+      qs('#p'+k).classList.toggle('on',filled);
+    });
+    qs('#cnt').textContent=n;
+    qs('#done').classList.toggle('on', n===3);
+  }
+  tick();
+
+  qs('#print').addEventListener('click',function(){ window.print(); });
+
+  qs('#copy').addEventListener('click',function(){
+    var out=['「결단」 실행할 수밖에 없는 질문 8개','롭 무어 『결단』 · 대가창 2기 1주차',''];
+    qsa('.q').forEach(function(sec){
+      var k=sec.getAttribute('data-k');
+      var q=qs('.q-text',sec).textContent.replace('오늘','').trim();
+      out.push(k+'. '+q);
+      qsa('textarea,input',sec).forEach(function(f){
+        if(f.value.trim()) out.push('   → '+f.value.trim());
+      });
+      var yn=qs('[data-yn][aria-pressed="true"]',sec);
+      if(yn) out.push('   → '+yn.textContent);
+      out.push('');
+    });
+    var txt=out.join('\n');
+    var btn=this;
+    function ok(){ btn.textContent='복사했습니다'; setTimeout(function(){btn.textContent='내 답 전체 복사'},1800); }
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(txt).then(ok,fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta=document.createElement('textarea');
+      ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); ok(); }catch(e){ btn.textContent='복사가 안 됩니다 — 직접 긁어서 복사해 주세요'; }
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
+</body>
+</html>
