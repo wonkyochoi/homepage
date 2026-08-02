@@ -236,7 +236,7 @@ header.hero{background:#FFFFFF!important;color:#141414!important;border-radius:0
 .founder-mini a{color:#FF4400;font-weight:800;}
 </style>
 <style>
-.hook{max-width:760px;margin:26px auto 0;padding:18px 18px;background:#EAFDFC;
+.hook{margin:26px 0 0;padding:18px 18px;background:#EAFDFC;
   border-left:5px solid #FF4400;border-radius:4px;font-size:16.5px;line-height:1.75;color:#141414;word-break:keep-all;}
 .hook b{display:block;font-size:18.5px;font-weight:800;margin-bottom:6px;}
 .hook-sm{margin:0 0 14px;font-size:15px;padding:13px 15px;}
@@ -265,15 +265,21 @@ header.hero{background:#FFFFFF!important;color:#141414!important;border-radius:0
   color:#141414;font-family:inherit;font-size:16px;font-weight:800;border-radius:3px;cursor:pointer;text-align:left;}
 .gift .none{font-size:14.5px;color:#6E7480;margin-top:10px;line-height:1.7;}
 </style><style>
-.brand-eyebrow .abbr{background:#FF4400;color:#fff;font-weight:800;
-  letter-spacing:.02em;padding:4px 10px;margin-left:9px;border-radius:2px;
-  display:inline-block;vertical-align:middle;font-size:14px;}
-.brand-eyebrow{line-height:1.9!important;word-break:keep-all;}
+
+
+</style><style>
+.brand-eyebrow{display:inline-block;font-size:13px;letter-spacing:.1em;
+  color:#141414!important;background:#08E8DE;padding:5px 12px;font-weight:800;
+  margin:0 0 8px!important;word-break:keep-all;line-height:1.5;}
+.abbr-line{display:inline-block;background:#FF4400;color:#fff;font-weight:800;
+  font-size:14px;letter-spacing:.02em;padding:5px 12px;margin:0 0 10px 6px!important;
+  line-height:1.5;}
 </style></head>
 <body>
 <header class="hero">
   <div class="shelf" id="shelf" aria-hidden="true"></div>
-  <p class="brand-eyebrow">대운 만드는 가문 도서관 창립자 클럽<span class="abbr">대가창</span></p>
+  <p class="brand-eyebrow">대운 만드는 가문 도서관 창립자 클럽</p>
+  <p class="abbr-line">대가창</p>
   <h1 class="brand">백세문고<small>평생 읽고 남기는 서재</small></h1>
   <p class="hero-sub">이번 기수 12주 동안 함께 읽는 책입니다. 받아 볼 책은 <b style="color:#141414">주문할게요</b>, 이미 가지고 계신 책은 <b style="color:#141414">이미 있어요</b>를 눌러 주세요.</p>
   <div class="hero-meta" id="heroMeta"></div>
@@ -290,7 +296,7 @@ header.hero{background:#FFFFFF!important;color:#141414!important;border-radius:0
     <p class="benefit-badge">적립금 몇 백 원, 받아서 무엇 하시겠습니까</p>
     <p class="benefit-lead">백세문고는 <b>책값보다 큰 것</b>을 매주 함께 보냅니다</p>
     <div class="benefit-items">
-      <div class="bi"><span class="bi-ico">📖</span><div><b>주제 도서 12권</b><em>혼자서는 끝까지 못 읽던 책, 12주 함께 읽습니다</em></div></div>
+      <div class="bi"><span class="bi-ico">📖</span><div><b>주제 도서 13권</b><em>혼자서는 끝까지 못 읽던 책, 12주 함께 읽습니다</em></div></div>
       <div class="bi"><span class="bi-ico">✍️</span><div><b>최원교의 마음세우기 칼럼</b><em>그 책 한 권을 위해 작가가 직접 쓴 글 — 매주</em></div></div>
       <div class="bi"><span class="bi-ico">🔑</span><div><b>실행독서 질문 치트키</b><em>읽고 덮으면 끝나는 독서에서, 삶이 바뀌는 독서로</em></div></div>
     </div>
@@ -380,7 +386,7 @@ header.hero{background:#FFFFFF!important;color:#141414!important;border-radius:0
    ═══════════════════════════════════════════════════════════ */
 const CONFIG = {
   기수: "2기",
-  마감안내: "회원 10% 할인",
+  마감안내: "모든 책 10% 할인",
   받는이메일: "cmass77@naver.com",
   폼주소: "https://formspree.io/f/xykrwgbz",   // ← 신청이 이곳으로 자동 전송·저장됩니다
   계좌: { 은행:"수협은행", 번호:"1010-2073-8761", 예금주:"최원교(큰나)" },
