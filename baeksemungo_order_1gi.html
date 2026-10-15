@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>백세문고 · 도서 신청 (1기)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#FF4A0F;      /* 오렌지 (주조색) */
+    --orange-d:#F2460B;    /* 진한 오렌지 (글자·버튼) */
+    --peach:#FFEDE5;       /* 연한 오렌지 */
+    --mint:#12E3DA;        /* 민트 */
+    --mint-d:#111111;      /* 진한 민트 (이미 있어요) */
+    --mint-l:#E2FBF9;      /* 연한 민트 */
+    --ink:#111111;         /* 먹색 */
+    --paper:#FFFFFF;       /* 화이트 아이보리 */
+    --card:#FFFFFF;
+    --muted:#666666;
+    --line:#EAEAEA;
+    --shadow:0 10px 30px rgba(17,17,17,.06);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:"Noto Sans KR",sans-serif;background:var(--paper);
+    color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px 170px;}
+
+  header.hero{max-width:760px;margin:0 auto;position:relative;overflow:hidden;
+    background:#FFFFFF;
+    border-bottom:1px solid var(--line);border-radius:0 0 28px 28px;
+    padding:36px 26px 30px;box-shadow:var(--shadow);}
+  .topband{position:absolute;left:0;right:0;top:0;height:6px;background:var(--orange);}
+  .topband::after{content:"";position:absolute;left:0;right:0;top:6px;height:3px;background:var(--mint);}
+  .sun{position:absolute;right:-30px;top:-30px;width:170px;height:170px;border-radius:50%;
+    background:radial-gradient(circle,rgba(18,227,218,.28) 0%,rgba(18,227,218,.10) 45%,rgba(18,227,218,0) 70%);}
+  .shelf{display:flex;gap:5px;height:30px;margin:6px 0 22px;position:relative;}
+  .shelf span{flex:1;border-radius:3px 3px 1px 1px;}
+  .brand-eyebrow{font-size:13px;letter-spacing:.3em;color:var(--orange-d);font-weight:700;margin:0 0 8px;position:relative;}
+  .brand{font-family:"Noto Sans KR",sans-serif;font-weight:900;font-size:clamp(38px,9vw,54px);
+    line-height:1.1;margin:0;color:var(--ink);letter-spacing:-.02em;position:relative;}
+  .brand small{display:block;font-family:"Noto Sans KR",sans-serif;font-weight:700;
+    font-size:16px;letter-spacing:.12em;color:var(--orange);margin-top:12px;}
+  .hero-sub{margin:18px 0 0;font-size:16px;color:#4A4640;max-width:46ch;position:relative;}
+  .hero-sub b{color:var(--orange-d);}
+  .hero-sub b.m{color:var(--ink);background:linear-gradient(transparent 55%,var(--mint) 55%);}
+  .hl{background:linear-gradient(transparent 58%,var(--mint) 58%);padding:0 2px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;position:relative;}
+  .chip{background:#F5F5F5;border:1px solid var(--line);color:#333;display:inline-flex;align-items:center;gap:7px;border-radius:999px;
+    padding:6px 14px;font-size:13.5px;font-weight:500;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);}
+  .chip b{color:var(--orange);font-weight:900;}
+  .chip.m{color:var(--orange);font-weight:900;}
+
+  .guide{background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;margin:26px 0 8px;font-size:15px;color:#4A4640;}
+  .guide b{color:var(--orange-d);}
+
+  .benefit{margin-top:22px;background:#FFFFFF;
+    border:2px solid var(--ink);border-radius:20px;padding:24px 20px;}
+  .benefit-badge{display:inline-block;margin:0 0 12px;background:var(--mint);color:var(--ink);
+    font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;}
+  .benefit-lead{margin:0 0 6px;font-family:"Noto Sans KR",sans-serif;font-size:24px;color:var(--ink);font-weight:900;line-height:1.4;letter-spacing:-.02em;}
+  .benefit-lead b{color:var(--orange-d);}
+  .benefit-sub{margin:0 0 16px;font-size:14.5px;color:#4A4640;}
+  .benefit-items{display:flex;flex-direction:column;gap:10px;}
+  .bi{display:flex;gap:13px;align-items:flex-start;background:#fff;
+    border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+  .bi-ico{flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:var(--mint-l);
+    display:flex;align-items:center;justify-content:center;}
+  .bi-ico.o{background:var(--peach);}
+  .bi b{display:block;color:var(--ink);font-size:15.5px;font-weight:700;}
+  .bi em{display:block;font-style:normal;font-size:13.5px;color:var(--muted);margin-top:2px;}
+  .benefit-vs{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+  .benefit-vs span{border-radius:12px;padding:11px 14px;font-size:14px;font-weight:600;}
+  .vs-x{background:#F5F5F5;color:#888;text-decoration:line-through;}
+  .vs-o{background:var(--orange-d);color:#fff;font-weight:800;}
+
+  .section-label{font-family:"Noto Sans KR",sans-serif;font-weight:900;font-size:24px;letter-spacing:-.02em;color:var(--ink);
+    margin:36px 0 4px;display:flex;align-items:center;gap:12px;}
+  .section-label::after{content:"";flex:1;height:1px;background:var(--line);}
+  #list{background:#F7F7F7;border:1px solid var(--line);border-radius:22px;padding:4px 14px 16px;margin-top:10px;}
+  .book{background:var(--card);border:1.5px solid var(--line);border-radius:16px;
+    padding:16px 16px 14px;margin-top:14px;box-shadow:0 2px 8px rgba(43,43,43,.04);
+    transition:border-color .18s,box-shadow .18s,background .18s;}
+  .book.is-order{border-color:var(--orange);box-shadow:0 6px 18px rgba(255,74,15,.18);}
+  .book.is-own{border-color:var(--mint);background:var(--mint-l);}
+  .book-top{display:flex;gap:14px;align-items:flex-start;}
+  .cover.ph{display:flex;align-items:flex-end;padding:6px;font-size:10px;font-weight:900;line-height:1.25;color:#fff;word-break:keep-all;overflow:hidden;}
+  .cover{flex:0 0 auto;width:64px;height:92px;border-radius:4px;object-fit:cover;
+    box-shadow:0 3px 10px rgba(43,43,43,.18);background:#eee;}
+  .book-info{flex:1;min-width:0;}
+  .wk{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--orange-d);
+    background:var(--peach);border-radius:6px;padding:2px 8px;margin-bottom:5px;}
+  .book.is-own .wk{color:var(--ink);background:var(--mint);}
+  .wkdate{display:inline-block;font-size:12.5px;font-weight:600;color:var(--muted);margin-left:8px;}
+  .title{font-weight:900;font-size:19px;letter-spacing:-.01em;color:var(--ink);margin:0;line-height:1.35;word-break:keep-all;}
+  .author{font-size:14px;color:var(--muted);margin:3px 0 0;}
+  .price{margin:8px 0 0;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;}
+  .price .list{color:#9C958B;text-decoration:line-through;font-size:14px;}
+  .price .memb{color:var(--orange-d);font-weight:900;font-size:19px;}
+  .price .dc{background:var(--orange-d);color:#fff;font-size:11.5px;font-weight:700;border-radius:5px;padding:2px 7px;}
+  .choices{display:flex;gap:10px;margin-top:14px;}
+  .choices button{flex:1;font-family:inherit;font-size:15.5px;font-weight:700;padding:13px 8px;
+    border-radius:12px;border:1.5px solid var(--line);background:#F5F5F5;color:#444;
+    cursor:pointer;transition:all .15s;min-height:50px;}
+  .choices button:hover{border-color:var(--orange);}
+  .choices button.sel-order{background:var(--orange);border-color:var(--orange);color:#fff;}
+  .book.is-used{border-color:var(--ink);background:#F7F7F7;}
+  .choices button.sel-used{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .price .sold{background:var(--ink);color:#fff;font-size:12.5px;font-weight:700;border-radius:5px;padding:3px 9px;}
+  .soldnote{margin:10px 0 0;background:var(--mint-l);border-radius:10px;padding:10px 12px;font-size:13.5px;color:#333;line-height:1.6;}
+  .choices button.sel-own{background:var(--mint);border-color:var(--mint);color:var(--ink);}
+  .choices button:focus-visible{outline:3px solid var(--ink);outline-offset:2px;}
+
+  .who{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;}
+  .who label{display:block;font-weight:900;color:var(--ink);margin:0 0 6px;font-size:15px;}
+  .who input{width:100%;font-family:inherit;font-size:16px;padding:13px 14px;border:1.5px solid var(--line);
+    border-radius:12px;background:#F7F7F7;color:var(--ink);}
+  .who input:focus{outline:none;border-color:var(--orange);background:#fff;}
+  .who .row+.row{margin-top:16px;}
+  .hint{font-size:13px;color:var(--muted);margin:6px 0 0;}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.97);color:var(--ink);
+    backdrop-filter:blur(8px);border-top:3px solid var(--mint);box-shadow:0 -8px 24px rgba(43,43,43,.10);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));}
+  .bar-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;}
+  .tally{font-size:14px;color:#4A4640;flex:1;line-height:1.35;}
+  .tally b{color:var(--orange);}
+  .tally .sum{font-size:20px;color:var(--ink);font-weight:900;}
+  .go{font-family:inherit;font-weight:900;font-size:16px;background:var(--mint);color:var(--ink);
+    border:none;border-radius:999px;box-shadow:0 6px 18px rgba(18,227,218,.40);padding:14px 22px;cursor:pointer;white-space:nowrap;transition:filter .15s,transform .05s;}
+  .go:hover{filter:brightness(1.06);}
+  .go:active{transform:translateY(1px);}
+  .go:disabled{background:#EAEAEA;color:#999;box-shadow:none;cursor:not-allowed;}
+
+  .veil{position:fixed;inset:0;z-index:100;background:rgba(43,43,43,.45);display:none;align-items:flex-end;justify-content:center;}
+  .veil.open{display:flex;}
+  .sheet{background:var(--paper);width:100%;max-width:760px;border-radius:22px 22px 0 0;
+    padding:24px 22px calc(28px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.2);
+    max-height:90vh;overflow:auto;animation:rise .28s cubic-bezier(.2,.8,.2,1);}
+  @keyframes rise{from{transform:translateY(30px);opacity:.6}to{transform:none;opacity:1}}
+  .sheet h3{font-family:"Noto Sans KR",sans-serif;color:var(--ink);font-size:22px;margin:0 0 4px;}
+  .sheet .hint{margin-bottom:14px;}
+  .receipt{background:#fff;border:1.5px dashed var(--orange);border-radius:12px;padding:16px 18px;
+    font-size:14.5px;white-space:pre-wrap;color:var(--ink);line-height:1.7;}
+  .btn-primary{background:var(--mint);color:var(--ink);border:none;}
+  .btn-mail{display:flex;font-family:inherit;cursor:pointer;border:none;width:100%;margin-top:16px;font-size:17px;font-weight:900;
+    padding:17px 10px;border-radius:999px;align-items:center;justify-content:center;min-height:56px;}
+  .close-x{background:none;border:none;color:var(--muted);font-size:15px;cursor:pointer;margin-top:14px;width:100%;padding:8px;font-family:inherit;}
+  .done-ico{width:64px;height:64px;border-radius:50%;background:var(--mint-l);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;}
+  footer{max-width:760px;margin:36px auto 0;padding:0 18px;color:var(--muted);font-size:13px;text-align:center;line-height:1.7;}
+  footer b{color:var(--orange);font-family:"Noto Sans KR",sans-serif;}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+  @media (max-width:480px){.choices button{font-size:14.5px;}.title{font-size:17.5px;}.cover{width:56px;height:80px;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="topband" aria-hidden="true"></div>
+  <div class="sun" aria-hidden="true"></div>
+  <div class="shelf" id="shelf" aria-hidden="true"></div>
+  <p class="brand-eyebrow">대가창</p>
+  <h1 class="brand"><span class="hl">백세</span><span style="color:var(--orange)">문고</span><small>행복을 들이는 서가 한 칸</small></h1>
+  <p class="hero-sub">이번 기수에 읽을 책입니다. 받아 볼 책은 <b>주문할게요</b>, 이미 가지고 계신 책은 <b class="m">이미 있어요</b>를 한 권씩 눌러 주세요.</p>
+  <div class="hero-meta" id="heroMeta"></div>
+</header>
+
+<div class="wrap">
+  <div class="guide">
+    모든 책에 <b>10% 할인</b>이 적용됩니다. 한 권씩 눌러 고르시면 아래에
+    <b>주문 권수와 합계 금액</b>이 자동으로 나와요. <b>주문서 만들기 → 신청하기</b>를
+    누르면 백세문고로 <b>바로 접수</b>됩니다. (입금 계좌도 함께 안내돼요.)
+  </div>
+
+  <div class="benefit">
+    <p class="benefit-badge">할인은 온라인 서점과 똑같이 10%</p>
+    <p class="benefit-lead"><b>더 나은 것</b>을 창조해서 나눕니다</p>
+    <p class="benefit-sub">같은 책값으로, 읽고 끝나는 독서가 아니라 행복해지는 실행독서를 가져가십시오.</p>
+    <div class="benefit-items">
+      <div class="bi"><span class="bi-ico o"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF4A0F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2z"/><path d="M22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg></span><div><b>주제 도서 12권</b><em>혼자서는 끝까지 못 읽던 책, 12주 함께 읽습니다</em></div></div>
+      <div class="bi"><span class="bi-ico"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div><b>창립자 카드</b><em>책마다 A4 한 장 — 읽은 것을 실행으로 바꾸는 선물</em></div></div>
+      <div class="bi"><span class="bi-ico"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg></span><div><b>강의 영상</b><em>매주 수요일 새벽 강의 — 창립자에게만 공유합니다</em></div></div>
+      <div class="bi"><span class="bi-ico o"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF4A0F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></span><div><b>최원교의 마음세우기 칼럼</b><em>그 책 한 권을 위해 작가가 직접 쓴 글</em></div></div>
+    </div>
+    <div class="benefit-vs">
+      <span class="vs-x">다른 곳 &nbsp;책값 10% 할인 · 적립금 몇 백 원</span>
+      <span class="vs-o">백세문고 &nbsp;10% 할인 + 창립자 카드 + 강의 영상 · 12주</span>
+    </div>
+  </div>
+
+  <div class="section-label">1기 선정도서</div>
+  <div id="list"></div>
+
+  <div class="who">
+    <div class="row">
+      <label for="name">신청자 이름</label>
+      <input id="name" type="text" placeholder="예) 홍길동" autocomplete="name">
+    </div>
+    <div class="row">
+      <label for="contact">연락처 <span style="font-weight:700;color:var(--orange)">(필수)</span></label>
+      <input id="contact" type="tel" inputmode="tel" required placeholder="예) 010-0000-0000" autocomplete="tel">
+      <p class="hint" id="contactErr" style="display:none;color:var(--orange);font-weight:700;">연락처를 꼭 적어 주세요. 배송·입금 확인 연락을 드립니다.</p>
+      <p class="hint">배송·연락에만 사용됩니다.</p>
+    </div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="tally" id="tally">아직 선택한 책이 없습니다.</div>
+    <button class="go" id="go" disabled>주문서 만들기</button>
+  </div>
+</div>
+
+<div class="veil" id="veil">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="주문서">
+    <div id="preSend">
+      <h3>주문서가 준비됐어요</h3>
+      <p class="hint">아래 <b>신청하기</b>를 누르면 백세문고로 바로 접수됩니다.</p>
+      <div class="receipt" id="receipt"></div>
+      <button class="btn-primary btn-mail" id="sendBtn">신청하기</button>
+      <button class="close-x" id="closeBtn">닫기</button>
+    </div>
+    <div id="doneBox" style="display:none;text-align:center;padding:16px 4px 6px;">
+      <div class="done-ico"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h3 style="font-size:24px;margin:0 0 8px;">신청이 완료되었습니다</h3>
+      <p style="color:var(--muted);font-size:15px;margin:0 0 18px;line-height:1.7;">
+        백세문고로 잘 접수되었습니다.<br>아래 계좌로 입금해 주시면 발송해 드립니다.</p>
+      <div class="receipt" id="doneInfo" style="text-align:left;"></div>
+      <button class="btn-primary btn-mail" id="doneClose">확인</button>
+    </div>
+  </div>
+</div>
+
+<footer><b>단어를 먹고 문장을 이룬다</b><br>백세문고 · 대운을 만드는 가문의 도서관 창립자 클럽 · 백세라이프디자이너 최원교<br>대가창 회원 전용 · 외부 공유 금지</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   관리자 설정  ── 다음 기수에는 이 부분만 바꾸시면 됩니다
+   가격은 원(₩) 단위 정수로 입력하세요.
+   list = 정가(100%),  memb = 회원가(10% 할인가)
+   ═══════════════════════════════════════════════════════════ */
+const CONFIG = {
+  기수: "1기",
+  마감안내: "모든 책 10% 할인",
+  기간표시: true,   // 매주 수요일 시작 (수~화)
+  받는이메일: "cmass77@naver.com",
+  폼주소: "https://formspree.io/f/xykrwgbz",   // ← 신청이 이곳으로 자동 전송·저장됩니다
+  계좌: { 은행:"수협은행", 번호:"1010-2073-8761", 예금주:"최원교(큰나)" },
+  중고안내: "알라딘·예스24 중고샵, 당근마켓 등에서 구하실 수 있습니다. 판본이 여러 개일 수 있으니 출판사를 꼭 확인해 주세요.",
+  books: [
+    {"wk": "1주차", "from": "2026-04-22", "to": "2026-04-28", "title": "삶은 고가 아니다", "author": "대행스님", "list": 10000, "memb": 9000, "cover": "c1_01"},
+    {"wk": "2주차", "from": "2026-04-29", "to": "2026-05-05", "title": "유쾌한 창조자", "author": "제리 & 에스더 힉스", "cover": "c1_02", "publisher": "나비랑북스", "soldout": true},
+    {"wk": "3주차", "from": "2026-05-06", "to": "2026-05-12", "title": "상처받지 않는 영혼", "author": "마이클 A. 싱어", "list": 16800, "memb": 15120, "cover": "c1_03"},
+    {"wk": "4주차", "from": "2026-05-13", "to": "2026-05-19", "title": "꿈을 이루게 하는 삶의 공식", "author": "최원교", "list": 17000, "memb": 15300, "cover": "c1_04"},
+    {"wk": "5주차", "from": "2026-05-20", "to": "2026-05-26", "title": "오더", "author": "조성민", "list": 18000, "memb": 16200, "cover": "c1_05"},
+    {"wk": "6주차", "from": "2026-05-27", "to": "2026-06-02", "title": "퓨처 셀프", "author": "벤자민 하디", "list": 22000, "memb": 19800, "cover": "c1_06"},
+    {"wk": "7주차", "from": "2026-06-03", "to": "2026-06-09", "title": "부자의 운", "author": "사이토 히토리", "list": 17000, "memb": 15300, "cover": "c1_07", "publisher": "다산북스"},
+    {"wk": "8주차", "from": "2026-06-10", "to": "2026-06-16", "title": "부자의 인간관계", "author": "사이토 히토리", "list": 15000, "memb": 13500, "cover": "c1_08"},
+    {"wk": "9주차", "from": "2026-06-17", "to": "2026-06-23", "title": "부자의 행동습관", "author": "사이토 히토리", "list": 17000, "memb": 15300, "cover": "c1_09"},
+    {"wk": "10주차", "from": "2026-06-24", "to": "2026-06-30", "title": "부자의 그릇", "author": "이즈미 마사토", "list": 17000, "memb": 15300, "cover": "c1_10"},
+    {"wk": "11주차", "from": "2026-07-01", "to": "2026-07-07", "title": "금가루 수업", "author": "캐서린 폰더", "list": 19800, "memb": 17820, "cover": "c1_11"},
+    {"wk": "12주차", "from": "2026-07-08", "to": "2026-07-14", "title": "원씽", "author": "게리 켈러 & 제이 파파산", "list": 16800, "memb": 15120, "cover": "c1_12"},
+  ]
+};
+/* ═══════════════════════════════════════════════════════════ */
+
+const COVERS = {};
+
+const won = n => n.toLocaleString('ko-KR') + '원';
+const md = s => { const [y,m,d]=s.split('-'); return `${+m}.${+d}`; };
+const fmtRange = (a,b) => `${md(a)} ~ ${md(b)}`;
+const state = CONFIG.books.map(()=>null);
+const spineColors=["#FF4A0F","#12E3DA","#111111","#FF7A45","#8FF2EC","#E5E5E5","#FF4A0F","#111111","#12E3DA","#FFB596","#333333","#5CEDE6"];
+
+document.getElementById('shelf').innerHTML =
+  CONFIG.books.map((_,i)=>`<span style="background:${spineColors[i%spineColors.length]}"></span>`).join('');
+document.getElementById('heroMeta').innerHTML =
+  (()=>{ const ds=CONFIG.books.filter(b=>b.from&&b.to);
+         const n=CONFIG.books.length;
+         const head=`<span class="chip">${CONFIG.기수} · <b>${new Set(CONFIG.books.map(b=>b.wk)).size}주 ${n}권</b></span>`;
+         if(!CONFIG.기간표시||!ds.length) return head;
+         return head+`<span class="chip">${fmtRange(ds[0].from,ds[ds.length-1].to)}</span>`; })()+
+  (CONFIG.마감안내?`<span class="chip m">${CONFIG.마감안내}</span>`:'');
+
+const list=document.getElementById('list');
+list.innerHTML=CONFIG.books.map((b,i)=>{
+  const dateHtml = (CONFIG.기간표시 && b.from && b.to) ? `<span class="wkdate">${fmtRange(b.from,b.to)}</span>` : '';
+  const phc=["#FF4A0F","#111111","#12E3DA"][i%3];
+  const cover = COVERS[b.cover] ? `<img class="cover" src="${COVERS[b.cover]}" alt="${b.title} 표지">`
+    : `<div class="cover ph" aria-hidden="true" style="background:${phc};color:${phc==='#12E3DA'?'#111':'#fff'}">${b.title}</div>`;
+  const meta = b.publisher ? `${b.author} · ${b.publisher}` : b.author;
+  const priceHtml = b.soldout ? `<span class="sold">품절 · 중고 구입</span>`
+    : `<span class="list">${won(b.list)}</span><span class="memb">${won(b.memb)}</span><span class="dc">10%↓</span>`;
+  const note = b.soldout ? `<p class="soldnote">출판사 <b>${b.publisher||''}</b> 품절이라 새 책 구입이 어렵습니다.<br>${CONFIG.중고안내||''}</p>` : '';
+  const btns = b.soldout
+    ? `<button type="button" data-i="${i}" data-v="used">중고로 구할게요</button><button type="button" data-i="${i}" data-v="own">이미 있어요</button>`
+    : `<button type="button" data-i="${i}" data-v="order">주문할게요</button><button type="button" data-i="${i}" data-v="own">이미 있어요</button>`;
+  return `
+  <div class="book" id="book${i}">
+    <div class="book-top">
+      ${cover}
+      <div class="book-info">
+        <span class="wk">${b.wk}</span>${dateHtml}
+        <p class="title">${b.title}</p>
+        <p class="author">${meta}</p>
+        <div class="price">${priceHtml}</div>
+        ${note}
+      </div>
+    </div>
+    <div class="choices">${btns}</div>
+  </div>`;
+}).join('');
+
+function paint(i){
+  const card=document.getElementById('book'+i);
+  card.classList.toggle('is-order',state[i]==='order');
+  card.classList.toggle('is-own',state[i]==='own');
+  card.classList.toggle('is-used',state[i]==='used');
+  card.querySelectorAll('.choices button').forEach(btn=>{
+    btn.classList.remove('sel-order','sel-own','sel-used');
+    if(state[i]===btn.dataset.v)btn.classList.add('sel-'+state[i]);
+  });
+}
+function totals(){
+  let cnt=0,memb=0,listSum=0,own=0,used=0;
+  CONFIG.books.forEach((b,i)=>{
+    if(state[i]==='order'){cnt++;memb+=b.memb;listSum+=b.list;}
+    if(state[i]==='own')own++;
+    if(state[i]==='used')used++;
+  });
+  return {cnt,memb,listSum,own,used,save:listSum-memb};
+}
+function updateBar(){
+  const {cnt,memb,own,used}=totals();
+  const t=document.getElementById('tally');
+  const extra=(own?` <span style="opacity:.7">· 소장 ${own}</span>`:'')+(used?` <span style="opacity:.7">· 중고 ${used}</span>`:'');
+  if(cnt===0&&own===0&&used===0){t.innerHTML="아직 선택한 책이 없습니다.";}
+  else if(cnt===0){t.innerHTML=`선택함${extra}`;}
+  else{t.innerHTML=`주문 <b>${cnt}</b>권 · 합계 <span class="sum">${won(memb)}</span>`+extra;}
+  document.getElementById('go').disabled=cnt===0;
+}
+list.addEventListener('click',e=>{
+  const btn=e.target.closest('button');if(!btn)return;
+  const i=+btn.dataset.i,v=btn.dataset.v;
+  state[i]=(state[i]===v)?null:v;
+  paint(i);updateBar();
+});
+
+function buildText(){
+  const name=(document.getElementById('name').value||'').trim();
+  const contact=(document.getElementById('contact').value||'').trim();
+  const {cnt,memb,save,own,used}=totals();
+  const orderLines=[],ownLines=[],usedLines=[];
+  CONFIG.books.forEach((b,i)=>{
+    if(state[i]==='order')orderLines.push(`  · ${b.title} (${b.author})  ${won(b.memb)}`);
+    if(state[i]==='own')ownLines.push(`  · ${b.title}`);
+    if(state[i]==='used')usedLines.push(`  · ${b.title}${b.publisher?` / ${b.publisher}`:''}`);
+  });
+  let out=`백세문고 도서 신청 [${CONFIG.기수}]\n`;
+  out+=`━━━━━━━━━━━━━━\n`;
+  out+=`이름: ${name||'(미입력)'}\n`;
+  if(contact)out+=`연락처: ${contact}\n`;
+  out+=`\n■ 주문할 책 (${cnt}권)\n`+(orderLines.length?orderLines.join('\n'):'  (없음)');
+  out+=`\n\n────────────\n`;
+  out+=`합계: ${won(memb)}  (10% 할인 · ${won(save)} 절약)\n`;
+  out+=`────────────\n`;
+  out+=`\n입금 계좌\n  ${CONFIG.계좌.은행} ${CONFIG.계좌.번호}\n  예금주 ${CONFIG.계좌.예금주}\n`;
+  out+=`  입금액: ${won(memb)}\n`;
+  if(usedLines.length)out+=`\n■ 중고로 구입 (${used}권 · 품절도서)\n`+usedLines.join('\n')+`\n  ※ 백세문고 발송 대상이 아닙니다. 직접 구입해 주세요.\n`;
+  if(ownLines.length)out+=`\n■ 이미 소장 (${own}권)\n`+ownLines.join('\n')+`\n`;
+  out+=`━━━━━━━━━━━━━━`;
+  return {out,name};
+}
+
+const veil=document.getElementById('veil');
+document.getElementById('go').addEventListener('click',()=>{
+  const {out,name}=buildText();
+  const cEl=document.getElementById('contact');
+  const digits=(cEl.value||'').replace(/[^0-9]/g,'');
+  if(digits.length<9){
+    document.getElementById('contactErr').style.display='';
+    cEl.style.borderColor='var(--orange)';
+    cEl.scrollIntoView({behavior:'smooth',block:'center'});cEl.focus();
+    return;
+  }
+  document.getElementById('contactErr').style.display='none';cEl.style.borderColor='';
+  if(!name){if(!confirm('이름을 적지 않으셨어요. 그래도 신청하시겠어요?')){document.getElementById('name').focus();return;}}
+  document.getElementById('receipt').textContent=out;
+  document.getElementById('preSend').style.display='';
+  document.getElementById('doneBox').style.display='none';
+  veil.classList.add('open');
+});
+function closeVeil(){veil.classList.remove('open');}
+document.getElementById('closeBtn').addEventListener('click',closeVeil);
+document.getElementById('doneClose').addEventListener('click',closeVeil);
+veil.addEventListener('click',e=>{if(e.target===veil)closeVeil();});
+
+document.getElementById('sendBtn').addEventListener('click',async()=>{
+  const btn=document.getElementById('sendBtn');
+  const {out,name}=buildText();
+  const {cnt,memb,own,used}=totals();
+  const usedPicked=CONFIG.books.filter((b,i)=>state[i]==='used').map(b=>b.title).join(', ');
+  const contact=(document.getElementById('contact').value||'').trim();
+  const booksPicked=CONFIG.books.filter((b,i)=>state[i]==='order').map(b=>`${b.title}(${won(b.memb)})`).join(', ');
+  const ownPicked=CONFIG.books.filter((b,i)=>state[i]==='own').map(b=>b.title).join(', ');
+  btn.disabled=true;btn.textContent='전송 중…';
+  try{
+    const res=await fetch(CONFIG.폼주소,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        기수:CONFIG.기수, 이름:name||'(미입력)', 연락처:contact||'(미입력)',
+        주문권수:cnt+'권', 합계금액:won(memb), 주문도서:booksPicked,
+        이미소장:ownPicked||'(없음)', 중고구입도서:usedPicked||'(없음)', 주문서전문:out
+      })
+    });
+    if(!res.ok) throw new Error('전송 실패');
+    document.getElementById('doneInfo').textContent =
+      `신청자: ${name||'(미입력)'}\n주문: ${cnt}권\n입금액: ${won(memb)}\n\n${CONFIG.계좌.은행} ${CONFIG.계좌.번호}\n예금주 ${CONFIG.계좌.예금주}`+(used?`\n\n※ 중고 구입 ${used}권은 직접 구입해 주세요.`:'');
+    document.getElementById('preSend').style.display='none';
+    document.getElementById('doneBox').style.display='';
+  }catch(err){
+    alert('전송이 잘 되지 않았어요. 인터넷 연결을 확인하시고 다시 눌러주세요.');
+    btn.disabled=false;btn.textContent='신청하기';
+  }
+});
+updateBar();
+</script>
+</body>
+</html>
